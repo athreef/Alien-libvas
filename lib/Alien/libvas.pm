@@ -5,9 +5,9 @@ package Alien::libvas;
 # ABSTRACT: Perl distribution for libvas
 # VERSION
 
-our $VERSION = '0.01';
-
 use parent 'Alien::Base';
+
+our $VERSION = '0.01';
 
 =pod
 
@@ -24,8 +24,6 @@ Alien::libvas - Perl distribution for libvas
 =head1 DESCRIPTION
 
 See L<Proc::Memory> for a Perl wrapper that makes use of this distribution.
-
-Unfortunately, it doesn't work yet. It builds correctly but the XS test (init.t) fails.
 
 =cut
 
