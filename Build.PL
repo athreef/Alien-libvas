@@ -1,25 +1,68 @@
-use Alien::LibVAS;
 use Alien::Base::ModuleBuild;
 use Config;
-Alien::Base::ModuleBuild->new(
-    dist_name           => 'Alien::LibVAS',
-    alien_name          => 'libvas',
-    configure_requires  => { 'Alien::Base::ModuleBuild' => '0.022' }, # required for %{pkg_config}
-    alien_version_check => '%{pkg_config} --atleast-version 1.2.3 %n && %{pkg_config} --modversion %n',
+use Alien::CMake;
+my $build = Alien::Base::ModuleBuild->new(
+    module_name => 'Alien::libvas',
+    license => 'perl',
     alien_bin_requires => {
-        'Alien::CMake' => 0.07,
+        'Alien::CMake' => '0.07',
     },
-    alien_build_commands => [
-        "cmake -G 'Unix Makefiles' -DCMAKE_MAKE_PROGRAM=$Config{make} -DCMAKE_INSTALL_PREFIX:PATH=%s",
-        "$Config{make}",
-    ],
-   alien_repository => {
-     protocol => 'http',
-     host     => 'github.com',
-     location => '/a3f/libvas/archive/master.tar.gz',
-   },
-    alien_install_commands => [
-        "$Config{make} install",
-    ],
-)->create_build_script;
+    configure_requires => {
+        'Alien::Base::ModuleBuild' => 0,
+        'Module::Build' => 0,
+        'Alien::CMake' => '0.07',
+    },
+    build_requires => {
+        'Alien::CMake' => '0.07',
+    },
+    test_requires => {
+        'Test::More'         => 0,
+        'ExtUtils::CBuilder' => 0,
+        'Test::Alien'        => '0.05',
+        'Test2'              => '1.302015',
+        'Test2::Suite'       => '0.000030',
+    },
+    requires => {
+        'perl' => '5.008001',
+        'Alien::Base' => '0.030',
+    },
+    dist_author => 'Ahmad Fatoum <athreef@cpan.org>',
+    alien_name => 'libvas',
+    alien_repository => {
+        protocol => 'http',
+        host     => 'github.com',
+        location => '/a3f/libvas/archive',
+        exact_filename => 'master.tar.gz',
+    },
+    alien_inline_auto_include => [ 'vas.h' ],
+    alien_stage_install => 1,
 
+    alien_build_commands => [
+            'pwd',
+            Alien::CMake->config('prefix')
+              . '/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
+            'make',
+    ],
+    alien_install_commands => ['make install'],
+
+    #alien_build_commands => [
+        #"cmake -G 'Unix Makefiles' -DCMAKE_MAKE_PROGRAM=$Config{make} -DCMAKE_INSTALL_PREFIX:PATH=%s",
+        #"$Config{make}",
+    #],
+    #alien_install_commands => [
+        #"$Config{make} install",
+    #],
+    alien_repository => {
+        protocol => 'http',
+        host     => 'github.com',
+        location => '/a3f/libvas/archive',
+        exact_filename => "master.tar.gz",
+    },
+    extra_compiler_flags => Alien::CMake->config('cflags'),
+    extra_linker_flags   => Alien::CMake->config('libs'),
+);
+
+$build->create_build_script;
+#$build->dispatch('distmeta');
+#$build->dispatch('manifest');
+#$build->dispatch('build');

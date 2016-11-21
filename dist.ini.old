@@ -1,13 +1,18 @@
-name    = Alien-LibVAS
+name    = Alien-libvas
 author  = Ahmad Fatoum <athreef@cpan.org>
 license = Perl_5
 copyright_holder = Ahmad Fatoum
 copyright_year   = 2016
 
-[Alien]
-repo = http://github.com/a3f/libvas/archive/master.tar.gz
-alien_name = libvas
-alien_bin_requires = Alien::CMake = 0.07
+[@Alien]
+repo = http://github.com/a3f/libvas/archive/
+exact_filename = master.tar.gz
+name = libvas
+bin_requires = Alien::CMake = 0.07
+build_command = cmake -G 'Unix Makefiles' -DCMAKE_MAKE_PROGRAM=%c -DCMAKE_INSTALL_PREFIX:PATH=%s && make
+build_command = make
+stage_install   = 1
+isolate_dynamic = 1
 
 [GithubMeta]
 issues = 1

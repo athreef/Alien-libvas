@@ -1,37 +1,22 @@
-use strict;
-use warnings;
-package Alien::LibVAS;
-
-# ABSTRACT: Perl distribution for libvas
-# VERSION
-
-use parent 'Alien::Base';
-1;
-__END__
-
-
 =pod
 
 =encoding utf8
 
 =head1 NAME
 
-Alien::LibVAS - Perl distribution for libvas
+Alien::libvas - Perl distribution for libvas
 
-=head1 SYNOPSIS
+=head1 INSTALL
 
-    cpan Alien::LibVAS
-
+    cpan Alien::libvas
 
 =head1 DESCRIPTION
 
 See L<Proc::Memory> for a Perl wrapper that makes use of this distribution.
 
-=cut
-
 =head1 GIT REPOSITORY
 
-L<http://github.com/athreef/Alien-LibVAS>
+L<http://github.com/athreef/Alien-libvas>
 
 =head1 SEE ALSO
 
