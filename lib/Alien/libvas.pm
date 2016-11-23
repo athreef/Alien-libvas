@@ -4,10 +4,10 @@ package Alien::libvas;
 
 # ABSTRACT: Perl distribution for libvas
 # VERSION
+our $VERSION = '0.02';
 
 use parent 'Alien::Base';
 
-our $VERSION = '0.01';
 
 =pod
 
@@ -37,7 +37,10 @@ L<http://github.com/athreef/Alien-libvas>
 
 =head1 SEE ALSO
 
+L<libvas|http://github.com/a3f/libvas>
+
 L<Proc::Memory>
+
 L<Alien>
 
 =head1 AUTHOR

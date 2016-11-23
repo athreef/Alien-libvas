@@ -38,20 +38,12 @@ my $build = Alien::Base::ModuleBuild->new(
     alien_stage_install => 1,
 
     alien_build_commands => [
-            'pwd',
             Alien::CMake->config('prefix')
               . '/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
-            'make',
+            $Config{make},
     ],
-    alien_install_commands => ['make install'],
+    alien_install_commands => ["$Config{make} install"],
 
-    #alien_build_commands => [
-        #"cmake -G 'Unix Makefiles' -DCMAKE_MAKE_PROGRAM=$Config{make} -DCMAKE_INSTALL_PREFIX:PATH=%s",
-        #"$Config{make}",
-    #],
-    #alien_install_commands => [
-        #"$Config{make} install",
-    #],
     alien_repository => {
         protocol => 'http',
         host     => 'github.com',
