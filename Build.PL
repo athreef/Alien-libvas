@@ -3,7 +3,16 @@ use Config;
 use Alien::CMake;
 my $build = Alien::Base::ModuleBuild->new(
     module_name => 'Alien::libvas',
+    alien_name => 'libvas',
+    dist_author => 'Ahmad Fatoum <athreef@cpan.org>',
     license => 'perl',
+
+    alien_repository => {
+        protocol => 'http',
+        host     => 'github.com',
+        location => '/a3f/libvas/archive',
+        exact_filename => 'master.tar.gz',
+    },
     alien_bin_requires => {
         'Alien::CMake' => '0.07',
     },
@@ -14,9 +23,13 @@ my $build = Alien::Base::ModuleBuild->new(
     },
     build_requires => {
         'Alien::CMake' => '0.07',
+        # TODO: fallback to HTTP download when IO::Socket::SSL doesn't exist
+        'IO::Socket::SSL' => 0
+    },
+    recommends => {
+        'IO::Socket::SSL' => 0,
     },
     test_requires => {
-        'Test::More'         => 0,
         'ExtUtils::CBuilder' => 0,
         'Test::Alien'        => '0.05',
         'Test2'              => '1.302015',
@@ -25,14 +38,6 @@ my $build = Alien::Base::ModuleBuild->new(
     requires => {
         'perl' => '5.008001',
         'Alien::Base' => '0.030',
-    },
-    dist_author => 'Ahmad Fatoum <athreef@cpan.org>',
-    alien_name => 'libvas',
-    alien_repository => {
-        protocol => 'http',
-        host     => 'github.com',
-        location => '/a3f/libvas/archive',
-        exact_filename => 'master.tar.gz',
     },
     alien_inline_auto_include => [ 'vas.h' ],
     alien_stage_install => 1,
@@ -44,17 +49,11 @@ my $build = Alien::Base::ModuleBuild->new(
     ],
     alien_install_commands => ["$Config{make} install"],
 
-    alien_repository => {
-        protocol => 'http',
-        host     => 'github.com',
-        location => '/a3f/libvas/archive',
-        exact_filename => "master.tar.gz",
-    },
     extra_compiler_flags => Alien::CMake->config('cflags'),
     extra_linker_flags   => Alien::CMake->config('libs'),
 );
 
 $build->create_build_script;
-#$build->dispatch('distmeta');
+$build->dispatch('distmeta');
 #$build->dispatch('manifest');
 #$build->dispatch('build');
