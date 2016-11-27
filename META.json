@@ -49,7 +49,7 @@
    "provides" : {
       "Alien::libvas" : {
          "file" : "lib/Alien/libvas.pm",
-         "version" : "0.10"
+         "version" : "0.12"
       }
    },
    "release_status" : "stable",
@@ -58,6 +58,6 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.10",
+   "version" : "0.12",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
