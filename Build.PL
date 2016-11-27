@@ -44,7 +44,8 @@ my $build = Alien::Base::ModuleBuild->new(
 
     alien_build_commands => [
             Alien::CMake->config('prefix')
-              . '/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
+              . "/bin/cmake -DCMAKE_C_COMPILER_INIT=$Config{cc}"
+              . ' -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
             $Config{make},
     ],
     alien_install_commands => ["$Config{make} install"],
