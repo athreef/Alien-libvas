@@ -4,7 +4,7 @@ package Alien::libvas;
 
 # ABSTRACT: Perl distribution for libvas
 # VERSION
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 use parent 'Alien::Base';
 

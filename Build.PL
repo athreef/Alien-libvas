@@ -30,10 +30,11 @@ my $build = Alien::Base::ModuleBuild->new(
         'IO::Socket::SSL' => 0,
     },
     test_requires => {
-        'ExtUtils::CBuilder' => 0,
-        'Test::Alien'        => '0.05',
-        'Test2'              => '1.302015',
-        'Test2::Suite'       => '0.000030',
+        'ExtUtils::CBuilder'  => 0,
+        'Test::Alien'         => '0.05',
+        'Test2'               => '1.302015',
+        'Test2::Suite'        => '0.000030',
+        'Test2::Bundle::More' => 0,
     },
     requires => {
         'perl' => '5.008001',
