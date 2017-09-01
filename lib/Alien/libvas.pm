@@ -4,7 +4,7 @@ package Alien::libvas;
 
 # ABSTRACT: Perl distribution for libvas
 # VERSION
-our $VERSION = '0.20';
+our $VERSION = '0.202';
 
 use parent 'Alien::Base';
 
@@ -27,9 +27,9 @@ See L<Proc::Memory> for a Perl wrapper that makes use of this distribution.
 
 =head1 PLATFORMS
 
-libvas claims compatiblity with WinAPI's ReadProcessMemory/WriteProcessMeory, macOS/GNU Hurd Mach API, Linux procfs /proc/pid/mem, ptrace (2), and process_vm_readv/process_vm_writev, SunOS/Solaris procfs /proc/pid/as and finally BSD with ptrace (2) or procfs.
+libvas claims compatiblity with WinAPI's ReadProcessMemory/WriteProcessMeory, macOS/GNU Hurd Mach API, Linux procfs /proc/pid/mem, ptrace (2), and process_vm_readv/process_vm_writev, SunOS procfs /proc/pid/as and finally BSD with ptrace (2) or procfs.
 
-I don't have all these systems to verify this. So please report bugs, preferably on Github. :-)
+I don't have all these systems to verify this. So please report bugs you might run into, preferably on Github. :-)
 
 =cut
 

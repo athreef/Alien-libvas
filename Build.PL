@@ -51,6 +51,11 @@ my $build = Alien::Base::ModuleBuild->new(
     ],
     alien_install_commands => ["$Config{make} install"],
 
+    alien_test_commands => [
+            Alien::CMake->config('prefix') . "/bin/ctest" .
+            ($^O eq 'darwin' ? " -E child" : '') # child tests on macOS require superuser privileges
+    ],
+
     extra_compiler_flags => Alien::CMake->config('cflags'),
     extra_linker_flags   => Alien::CMake->config('libs'),
 );
