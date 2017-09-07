@@ -49,6 +49,7 @@ my $build = Alien::Base::ModuleBuild->new(
     alien_build_commands => [
                 Alien::CMake->config('prefix')
               . "/bin/cmake -DCMAKE_C_COMPILER_INIT=$Config{cc}"
+              . ' -DWITH_PIC=ON -DBUILD_MANUAL_TESTS=OFF'
               . ' -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
             "$cmake --build ."
      ],
