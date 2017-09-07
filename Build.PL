@@ -61,7 +61,7 @@ my $build = Alien::Base::ModuleBuild->new(
 
     extra_compiler_flags => Alien::CMake->config('cflags'),
     extra_linker_flags   => Alien::CMake->config('libs'),
-#    alien_isolate_dynamic => 1,
+    alien_isolate_dynamic => 1,
 );
 
 $build->create_build_script;
