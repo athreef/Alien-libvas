@@ -8,7 +8,7 @@ Alien::libvas - Perl distribution for libvas
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 INSTALL
 
